@@ -10,31 +10,25 @@ function Main() {
     const notFirstRender = useRef(false);
     
 
-    //https://api.themoviedb.org/3/movie/550?api_key=efdd13494893a735fbb6b9538ce2ea79
-    //'https://api.themoviedb.org/3/search/movie?query=the%20matrix&include_adult=false&language=en-US&page=1'
-
     useEffect(() => {
         // fetch data
         if (notFirstRender.current) {
             getData();
         }
-        console.log(buttonClicked);
     }, [buttonClicked]);
 
     const getData = () => {
-        let url = 'https://api.themoviedb.org/3/search/movie?api_key=efdd13494893a735fbb6b9538ce2ea79&query=' + movieInputCleaned.current + '&include_adult=false&language=en-US&page=1';
+        let url = 'https://api.themoviedb.org/3/search/movie?api_key=####&query=' + movieInputCleaned.current + '&include_adult=false&language=en-US&page=1';
         console.log(url);
         fetch(url)
         .then(response => response.json())
         .then(response => {
             setCurrMovie(response);
-            console.log(response);
         });
     }  
 
     const buttonPressed = () => {
         movieInputCleaned.current = movieInput.current.value.replace(/\s+/g, '%20').toLowerCase();
-        console.log("button clicked, MVI = " + movieInputCleaned.current);
         buttonClicked ? setButtonClicked(false) : setButtonClicked(true);
         notFirstRender.current = true;
     }
