@@ -1,6 +1,5 @@
 import { useEffect, useState, useRef } from "react";
 
-
 function Main() {
 
     const [currMovie, setCurrMovie] = useState(false);
@@ -9,7 +8,6 @@ function Main() {
     let movieInputCleaned = useRef(null);
     const notFirstRender = useRef(false);
     
-
     useEffect(() => {
         // fetch data
         if (notFirstRender.current) {
@@ -32,8 +30,6 @@ function Main() {
         buttonClicked ? setButtonClicked(false) : setButtonClicked(true);
         notFirstRender.current = true;
     }
-
-    
 
     return (
         <>
